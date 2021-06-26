@@ -74,14 +74,6 @@ fun BottomNavigationBar(selectedTabs: BottomTabs, onTabClicked: (BottomTabs) -> 
 @Composable
 fun TopBar(profileUrl: String, selectedTabs: BottomTabs, onCreateChatClick: () -> Unit) {
     TopAppBar(
-        modifier = Modifier
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(Gray100, Color.White),
-                    startY = 0f,
-                    endY = 1f
-                )
-            ),
         backgroundColor = Gray100,
         elevation = 0.dp,
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp)
@@ -90,7 +82,6 @@ fun TopBar(profileUrl: String, selectedTabs: BottomTabs, onCreateChatClick: () -
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
-
         ) {
             Image(
                 painter = rememberCoilPainter(
