@@ -33,7 +33,8 @@ import com.bamboodroid.composelearning.ui.theme.Gray400
 import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
-fun Home(homeViewModel: HomeViewModel = viewModel()) {
+fun Home() {
+    val homeViewModel: HomeViewModel = viewModel()
     val selectedTab: BottomTabs by homeViewModel.selectedTab.observeAsState(BottomTabs.CHATS)
     val profileImageUrl: String by homeViewModel.userProfileImageUrl.observeAsState("")
     Scaffold(
@@ -50,7 +51,7 @@ fun BottomNavigationBar(selectedTabs: BottomTabs, onTabClicked: (BottomTabs) -> 
         backgroundColor = Gray100,
         elevation = 4.dp
     ) {
-        BottomTabs.values().forEach { tab ->
+        BottomTabs.values().sortedBy { it.order }.forEach { tab ->
             BottomNavigationItem(
                 selected = selectedTabs == tab,
                 onClick = {
